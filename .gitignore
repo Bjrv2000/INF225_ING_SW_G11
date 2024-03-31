@@ -1,0 +1,19 @@
+# Archivo .gitignore para un proyecto Python
+
+# Directorios
+__pycache__/
+venv/
+env/
+
+# Archivos
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite
+*.log
+*.config
+*.google-cookie
+
+# Archivos de entorno
+.env

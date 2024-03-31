@@ -1,0 +1,2 @@
+Para ejecutar el codigo debe tener las bibliotecas instaladas de <flask langchain openai streamlit bs4 googlesearch python-dotenv>, ademas de tener un archivo .env en la carpeta "Hito5_6"
+donde se deberá encontrar su api key de la forma OPENAI_API_KEY=sk-xxxxx, primero se deberá correr el codigo del back-end para iniciar los endpoints en donde se conectará el front-end 

@@ -1,0 +1,2 @@
+Link Video:
+https://usmcl-my.sharepoint.com/:v:/g/personal/brian_roberts_sansano_usm_cl/EUrH4nMBGCVLkqMzF180XFMBnQm1E46yH4Id64XYPefmaQ?e=5Q3p0q&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZyIsInJlZmVycmFsQXBwUGxhdGZvcm0iOiJXZWIiLCJyZWZlcnJhbE1vZGUiOiJ2aWV3In19
