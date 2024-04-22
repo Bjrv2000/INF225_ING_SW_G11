@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 from flask import Flask, jsonify, request
 from langchain.chains import create_extraction_chain
 from langchain.chat_models import ChatOpenAI
-
+import openai
 
 load_dotenv()
 
@@ -27,7 +27,15 @@ def get_name(url):
     else:
         return None
 
-
+#chatgpt para insumos
+def chat_with_gpt(prompt):
+    response = openai.Completion.create(
+      engine="davinci-codex",  # Puedes cambiar a otros motores según tus necesidades
+      prompt=prompt,
+      temperature=0.7,
+      max_tokens=150
+    )
+    return response.choices[0].text.strip()
 @app.route('/search', methods=['POST'])
 def create_search():
     data = request.get_json()
@@ -52,7 +60,14 @@ def create_search():
         },
         "required": ["tematica", "lugar"],
     }
-
+    schema2 = {
+        "properties": {
+            "tematica": {"type": "string"},
+            "lugar": {"type": "string"},
+            "valor tope": {"type": "integer"},
+        },
+        "required": ["tematica", "lugar"],
+    }
     
 
     # Run chain
@@ -67,9 +82,12 @@ def create_search():
     #verifica si la respuesta del modelo llm es una lista o un diccionario para hacer la extraccion de objetos y lo guarda en la variable cosas
     if type(respuesta) is list:
         cosas=str(respuesta[0].get('tematica',"tematica no encontrada")+" "+respuesta[0].get('lugar', 'lugar no encontrado'))
+        Busqueda_insumos=str("Dame una lista de insumos necesarios para un taller de "+respuesta[0].get('tematica',"tematica no encontrada"))
     elif type(respuesta) is dict:
         cosas=str(respuesta.get('tematica',"tematica no encontrada")+" "+respuesta.get('lugar', 'lugar no encontrado'))
-        
+        Busqueda_insumos=str("Dame una lista de insumos necesarios para un taller de "+respuesta.get('tematica',"tematica no encontrada"))
+    insumos=chat_with_gpt(Busqueda_insumos)
+    print(insumos)
     
     
 
