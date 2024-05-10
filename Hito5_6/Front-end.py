@@ -33,7 +33,16 @@ def get_all_search_results():
         return response.json()
     else:
         return {'error': 'Failed to retrieve search results'}
+#############################ENVIO DE CORREO############################################
+def send_email(to_email, subject, message):
+    # Crea el POST request para enviar el correo electrónico
+    data = {'to_email': to_email, 'subject': subject, 'message': message}
+    response = requests.post(f'{API_BASE_URL}/send_email', json=data)
 
+    if response.status_code == 200:
+        return {'message': 'Correo enviado con éxito'}
+    else:
+        return {'error': 'Failed to send email'}
 ####################################################### Inicio visualizacion(Streamlit) ######################################################
 def main():
     st.title('Bienvenido')
@@ -57,6 +66,19 @@ def main():
     #Usa el metodo GET search para obtener todos los resultados 
     all_results = get_all_search_results()
     st.title('Todos los resultados')
+    ####################Correo#####################
+       
+    st.title('Enviar Correo Electrónico')
+    to_email = st.text_input('Ingrese la dirección de correo electrónico del destinatario')
+    subject = st.text_input('Ingrese el asunto del correo electrónico')
+    message = st.text_area('Ingrese el mensaje del correo electrónico', 'Mensaje predeterminado que se puede modificar')
+    
+    if st.button('Enviar Correo Electrónico'):
+        response = send_email(to_email, subject, message)
+        if 'error' in response:
+            st.error(response['error'])
+        else:
+            st.success(response['message'])
 
     #Muestra una lista de todos los resultados historicos
     for idx, search_result in enumerate(all_results):
