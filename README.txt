@@ -1,0 +1,1 @@
+Se va a continuar con el proyecto del paralelo 2 de Análisis y Diseño de Software del segundo semestre del año 2023. El proyecto consiste en la realizacion de un programa que permita agilizar la busqueda de talleristas para la empresa de Juan. Para esto se utiliza un motor de busqueda usando las librerias google y de openAI para obtener la informacion esperada en la busqueda 
