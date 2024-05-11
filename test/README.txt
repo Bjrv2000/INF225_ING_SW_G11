@@ -1,0 +1,2 @@
+Para realizar las pruebas unitarias bastarà con tener instaladas las librerias ya indicadas en el readme de la carpeta Main y correr el còdigo las pruebas llamado test.py
+ello arrojarà las pruebas en donde hay un error y 3 aciertos en las pruebas.
