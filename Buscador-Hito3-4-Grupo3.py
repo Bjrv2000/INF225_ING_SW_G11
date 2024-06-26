@@ -12,7 +12,6 @@ def get_name(url):
         #Si lo fue, extrae la información
         html_text = requests.get(url).text
         soup = BeautifulSoup(html_text, 'html.parser')
-        #pagina = soup.find("a", {"class": "landing-v4-ads-bloc tck-announce-link"})
         name = soup.find("div", {"class": "name"}).contents[0]
         name_without_label = name.string
         print(name_without_label)
