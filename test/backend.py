@@ -69,7 +69,6 @@ def create_search():
         },
         "required": ["tematica", "lugar"],
     }
-    
 
     # Run chain
     llm = ChatOpenAI(temperature=0.7, model="gpt-3.5-turbo")
@@ -81,13 +80,14 @@ def create_search():
     print(type(respuesta))
 
     #verifica si la respuesta del modelo llm es una lista o un diccionario para hacer la extraccion de objetos y lo guarda en la variable cosas
+    tne = "tematica no encontrada"
     if type(respuesta) is list:
-        cosas=str(respuesta[0].get('tematica',"tematica no encontrada")+" "+respuesta[0].get('lugar', 'lugar no encontrado'))
-        Busqueda_insumos=str("Dame una lista de insumos necesarios para un taller de "+respuesta[0].get('tematica',"tematica no encontrada"))
+        cosas=str(respuesta[0].get('tematica',tne)+" "+respuesta[0].get('lugar', 'lugar no encontrado'))
+        busqueda_insumos=str("Dame una lista de insumos necesarios para un taller de "+respuesta[0].get('tematica',tne))
     elif type(respuesta) is dict:
-        cosas=str(respuesta.get('tematica',"tematica no encontrada")+" "+respuesta.get('lugar', 'lugar no encontrado'))
-        Busqueda_insumos=str("Dame una lista de insumos necesarios para un taller de "+respuesta.get('tematica',"tematica no encontrada"))
-    insumos=chat_with_gpt(Busqueda_insumos)
+        cosas=str(respuesta.get('tematica',tne)+" "+respuesta.get('lugar', 'lugar no encontrado'))
+        busqueda_insumos=str("Dame una lista de insumos necesarios para un taller de "+respuesta.get('tematica',tne))
+    insumos = chat_with_gpt(busqueda_insumos)
     print(insumos)
     
     
