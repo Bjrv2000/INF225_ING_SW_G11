@@ -69,14 +69,6 @@ def create_search():
         },
         "required": ["tematica", "lugar"],
     }
-    schema2 = {
-        "properties": {
-            "tematica": {"type": "string"},
-            "lugar": {"type": "string"},
-            "valor tope": {"type": "integer"},
-        },
-        "required": ["tematica", "lugar"],
-    }
     
 
     # Run chain
